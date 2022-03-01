@@ -18,8 +18,8 @@ router.get('/details/:productId', (req, res) => {
 
 router.post('/create', (req, res) => {
     console.log(req.body);
-    
-    res.send('created');
+
+    res.redirect('/products');
 });
 
 module.exports = router;
