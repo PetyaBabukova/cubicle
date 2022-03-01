@@ -14,7 +14,7 @@ router.use('/', productController) //('/products', productController) - това
 // router.get('/create', productController.create);
 
 router.get('*', (req, res) => {
-    res.render('404', { layout: false });
+    res.render('404');
 })
 
 
