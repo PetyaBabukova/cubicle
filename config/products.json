@@ -1,0 +1,16 @@
+[
+    {
+        "id": "fbml81ol09p7b6v",
+        "name": "Simple cube",
+        "description": "Simple cube",
+        "imageUrl": "https://m.media-amazon.com/images/I/61Oj2aphXQL._AC_SS450_.jpg",
+        "level": "3"
+    },
+    {
+        "id": "fbml4cwl09pc5s4",
+        "name": "White cube",
+        "description": "A cube with a fur and leather",
+        "imageUrl": "https://www.japantrendshop.com/img/megahouse/all-white-rubik-cube-2.jpg",
+        "level": "4"
+    }
+]
