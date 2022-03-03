@@ -47,5 +47,12 @@
         "description": "Hard Cube",
         "imageUrl": "https://i.ytimg.com/vi/s9YUYV5HyCk/maxresdefault.jpg",
         "level": "5"
+    },
+    {
+        "id": "fbml4s0l0b3ls1q",
+        "name": "Star cube",
+        "description": "Acube with a stars in the centrum",
+        "imageUrl": "https://ae01.alicdn.com/kf/Hca5296dc4a92416592963e6e47beedd7y/Moyu-Meilong-Polaris-Cube-Puzzle-3x3-Twist-Cube-3x3x3-Specail-Shape-Hard-Difficult-3-3-3.jpg_Q90.jpg_.webp",
+        "level": "4"
     }
 ]

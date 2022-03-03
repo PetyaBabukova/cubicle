@@ -1,6 +1,6 @@
 const uniqid = require('uniqid');
 const Cube = require('../models/Cube');
-const fs = require('fs');
+const fs = require('fs/promises');
 const path = require('path');
 
 let productsData = require('../config/products.json')
@@ -26,7 +26,7 @@ function create(data, callback) {
 
     productsData.push(cube)
 
-    // //asolute path!!!
+    // //asolute path!!! Be ware of async func!
     // fs.writeFile(__dirname + '/../config/products.json', JSON.stringify(productsData), (err) => {
     //     if (err) {
     //         console.log(err);
@@ -34,12 +34,17 @@ function create(data, callback) {
     //     }
     // });
 
-    //with "path"
-    fs.writeFile(
+    // //with "path" and with callback
+    // fs.writeFile(
+    //     path.join(__dirname, '../config/products.json'),
+    //     JSON.stringify(productsData),
+    //     callback
+    // );
+
+    return fs.writeFile(
         path.join(__dirname, '../config/products.json'),
         JSON.stringify(productsData),
-        callback
-    );
+    )
 };
 
 module.exports = {
