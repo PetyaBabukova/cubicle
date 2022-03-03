@@ -12,5 +12,40 @@
         "description": "A cube with a fur and leather",
         "imageUrl": "https://www.japantrendshop.com/img/megahouse/all-white-rubik-cube-2.jpg",
         "level": "4"
+    },
+    {
+        "id": "fbmldl0l09q932r",
+        "name": "Cube 3x3",
+        "description": "Normal cube",
+        "imageUrl": "https://scx2.b-cdn.net/gfx/news/hires/2018/1-rubikscube.jpg",
+        "level": "3"
+    },
+    {
+        "id": "fbmlc1cl09sbzf0",
+        "name": "Eazy cube",
+        "description": "2 x 2",
+        "imageUrl": "https://play-lh.googleusercontent.com/ieQcuxyjirK2tgJKBRAKt3gd0xhFiLqj7yWpQJw6wynn_mndAEdI9iqngVWFrkwBMeI",
+        "level": "1"
+    },
+    {
+        "id": "fbml2mkl09sqdtg",
+        "name": "Triangle cube",
+        "description": "Triangle cube - snake",
+        "imageUrl": "https://m.media-amazon.com/images/I/716L7kWN+sL._SL1500_.jpg",
+        "level": "2"
+    },
+    {
+        "id": "fbml5kl09tb8im",
+        "name": "Mona Lisa cube",
+        "description": "A cube with photo",
+        "imageUrl": "https://www.boutiquesdemusees.fr/uploads/photos/2715/11767_l.jpg",
+        "level": "6"
+    },
+    {
+        "id": "fbml908l09tszde",
+        "name": "Hard Cube",
+        "description": "Hard Cube",
+        "imageUrl": "https://i.ytimg.com/vi/s9YUYV5HyCk/maxresdefault.jpg",
+        "level": "5"
     }
 ]
