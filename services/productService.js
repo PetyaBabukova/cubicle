@@ -13,7 +13,7 @@ function getOne(id) {
     return productsData.find(x => x.id == id);
 }
 
-function create(data) {
+function create(data, callback) {
     //the names of the properties are comming from html-form names
     // must validate inputs before this! if(req.body.name >= ...) Всичко трябва да се валидира!
     let cube = new Cube(
@@ -35,12 +35,11 @@ function create(data) {
     // });
 
     //with "path"
-    fs.writeFile(path.join(__dirname, '../config/products.json'), JSON.stringify(productsData), (err) => {
-        if (err) {
-            console.log(err);
-            return;
-        }
-    });
+    fs.writeFile(
+        path.join(__dirname, '../config/products.json'),
+        JSON.stringify(productsData),
+        callback
+    );
 };
 
 module.exports = {
