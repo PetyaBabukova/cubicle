@@ -1,6 +1,6 @@
 const fs = require('fs/promises');
 const path = require('path');
-let productsDb = require('../config/products.json')
+let productsDb = require('../config/products.json');
 
 
 module.exports = {
