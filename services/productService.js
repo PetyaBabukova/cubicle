@@ -1,11 +1,11 @@
 const Cube = require('../models/Cube');
-const productData = require('../data/productData')
 
 
-function getAll(query) {
-    let products = productData.getAll(); // това беше преди да изнесем някои функционалности в самия модел.
+async function getAll(query) {
+    //After mongoose building:
+    let products = await Cube.find({}).lean(); //without lean doesnt work
 
-    // let products = Cube.getAll();
+    console.log(products);
 
     if (query.search) {
         products = products.filter(x => x.name.toLowerCase().includes(query.search))
@@ -23,9 +23,7 @@ function getAll(query) {
 };
 
 function getOne(id) {
-    return productData.getOne(id); // това беше преди да изнесем някои функционалности в самия модел.
-
-    // return Cube.getOne(id)
+    return Cube.findById(id).lean();
 }
 
 function create(data) {
