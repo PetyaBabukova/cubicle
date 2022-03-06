@@ -1,4 +1,3 @@
-const uniqid = require('uniqid');
 const Cube = require('../models/Cube');
 const productData = require('../data/productData')
 
@@ -33,16 +32,14 @@ function create(data, callback) {
     //the names of the properties are comming from html-form names
     // must validate inputs before this! if(req.body.name >= ...) Всичко трябва да се валидира!
     let cube = new Cube(
-        uniqid(),
+        // uniqid(), // After we made mongooseSchema we dont need this uniqid anymore and we can remove thi library
         data.name,
         data.description,
         data.imageUrl,
         data.difficultyLevel
     );
-
         // return productData.create(cube);
-
-        return cube.save();
+        return cube.save(); //in mongoose there is build in functionality for save
 };
 
 module.exports = {

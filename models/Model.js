@@ -1,4 +1,4 @@
-const fs = require('fs/promises');
+const fs = require('fs/promises'); // fs.promises - this is for win7
 const path = require('path');
 let productsDb = require('../config/products.json');
 
