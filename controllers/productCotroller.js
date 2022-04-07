@@ -23,6 +23,8 @@ router.post('/create', validateProduct, (req, res) => {
         .then(() => res.redirect('/products'))
         .catch(() => res.status(500).end())
 
+
+
     // //with Callback
     // productService.create(req.body, (err) => {
     //     if (err) {
@@ -33,6 +35,7 @@ router.post('/create', validateProduct, (req, res) => {
 
     //with promise. Very, very cool! 
 });
+
 
 router.get('/details/:productId', async (req, res) => { //we can build this with promise to
     let product = await productService.getOneWithAccessories(req.params.productId);
@@ -46,7 +49,7 @@ router.get('/:productId/attach', async (req, res) => {
     
     res.render('attachAccessory', { product, accessories });
 });
-
+ 
 router.post('/:productId/attach', (req, res) => {
     productService.attachAccessory(req.params.productId, req.body.accessory)
         .then(() => res.redirect(`/products/details/${req.params.productId}`))
