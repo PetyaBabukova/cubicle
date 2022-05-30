@@ -1,5 +1,7 @@
 const bcript = require('bcrypt');
-const { SALT_ROUNDS } = require('../config/config')
+const jwt = require('jsonwebtoken');
+const { SALT_ROUNDS, SECRET } = require('../config/config');
+
 
 const User = require('../models/User');
 
@@ -23,8 +25,12 @@ if (!user) {
 }
 
     //compare password hash
+    let isMatch = await bcript.compare(password, user.password);
+    if (!isMatch) throw {message: 'Password does not match'}
 
     // generate token
+    let token = jwt.sign({ user_id: user._id }, SECRET);
+    return token;
 }
 
 module.exports = {
