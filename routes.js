@@ -6,10 +6,12 @@ const { Router } = require('express');
 const productController = require('./controllers/productCotroller');
 const homeController = require('./controllers/homeController');
 const accessoryController = require('./controllers/accessoryController');
+const authController = require('./controllers/authController');
 
 const router = Router();
 
 router.use('/', homeController);
+router.use('/auth', authController);
 router.use('/products', productController) //('/products', productController) - това е по-добрия вариант
 router.use('/accessories', accessoryController);
 
