@@ -5,26 +5,36 @@ const cubeSchema = new mongoose.Schema({
         type: String,
         required: true,
 },
+
     description: {
         type: String,
         required:true,
         maxlength: 50
 },
+
     imageUrl: {
         type: String,
         required: true,
         validete:/^https?/
     },
+
     difficultyLevel: {
         type: Number,
         required: true,
         min: 1,
         max: 6
     },
+
     accessories:[{ //!!! Array for more than 1 accessory! 
         type: mongoose.Types.ObjectId, //This is objectId, directly from mongoose
         ref: 'Accessory'
-    }]
+    }],
+
+    creator: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+    },
+    
 });
 
 // cubeSchema.methods //We can add more mathods and validations

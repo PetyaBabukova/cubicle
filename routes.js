@@ -3,6 +3,9 @@ const { Router } = require('express');
 // const router = express.Router;
 //const Router = require ('express').Router;
 
+const isAuthenticated = require('./middlewares/isAuthenticated');
+const isGuest = require('./middlewares/isGuest');
+
 const productController = require('./controllers/productCotroller');
 const homeController = require('./controllers/homeController');
 const accessoryController = require('./controllers/accessoryController');

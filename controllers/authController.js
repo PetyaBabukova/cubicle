@@ -7,8 +7,10 @@ const router = Router();
 // const router = require ('express').Router(); //може и така
 const authService = require('../services/authService');
 
+const isAuthenticated = require('../middlewares/isAuthenticated');
+const isGuest = require('../middlewares/isGuest');
 
-router.get('/login', (req, res) => {
+router.get('/login', isGuest, (req, res) => {
     res.render('login');
 });
 
@@ -27,11 +29,11 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.get('/register', (req, res) => {
+router.get('/register', isGuest, isGuest, (req, res) => {
     res.render('register');
 });
 
-router.post('/register', async (req, res) => {
+router.post('/register', isGuest, isGuest, async (req, res) => {
     //validate
     const { username, password, repeatPassword } = req.body;
 
@@ -49,6 +51,11 @@ router.post('/register', async (req, res) => {
     } catch (error) {
         res.render('register', { error });
     }
-})
+});
+
+router.get('/logout', isAuthenticated, (req, res)=>{
+    res.clearCookie(COOKIE_NAME);
+    res.redirect('/products');
+});
 
 module.exports = router;
