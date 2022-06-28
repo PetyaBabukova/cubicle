@@ -97,12 +97,14 @@ router.post('/register', isGuest, async (req, res) => {
         return;
     }
 
+    if (!isStrongPassword) {
+        console.log(req.body);
+        return res.render('register', {message: 'You should have strong password', username: req.body.username})
+    }
+
     //ако е асинхронна ф-ия задължително трабва try/catch
     try {
-        if (!isStrongPassword) {
-            throw{message: 'You should have strong password'}
-        }
-        
+               
         let user = await authService.register({ username, password });
 
         res.redirect('/auth/login');
