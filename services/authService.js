@@ -26,8 +26,9 @@ if (!user) {
 
     //compare password hash
     let isMatch = await bcript.compare(password, user.password);
-    if (!isMatch) throw {message: 'Password does not match'}
-
+    if (!isMatch) throw {message: 'Password does not match'};
+    
+    
     // generate token
     let token = jwt.sign({ _id: user._id, roles: ['admin'] }, SECRET); //в токена може да се сложи още информация за юзера - да не е нито много, нито малко !!! пропъртито user_id трябва да е _id. От това ми излезнаха сума ти грешки, когато се опитвах да закача криейтъра. В лекцията - 3 ч. Виж productService (create), productController (post/create)
     return token;

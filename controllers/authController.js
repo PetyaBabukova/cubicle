@@ -10,6 +10,8 @@ const authService = require('../services/authService');
 const isAuthenticated = require('../middlewares/isAuthenticated');
 const isGuest = require('../middlewares/isGuest');
 
+const validator = require('validator');
+
 router.get('/login', isGuest, (req, res) => {
     res.render('login');
 });
@@ -29,21 +31,78 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.get('/register', isGuest, isGuest, (req, res) => {
+router.get('/register', isGuest, (req, res) => {
     res.render('register');
 });
 
-router.post('/register', isGuest, isGuest, async (req, res) => {
+// let isStrongPasswordmiddleware = (req, res, next) => {
+//     let password = req.body.password;
+    
+//     let isStrongPassword = validator.isStrongPassword(password, { 
+//         minLength: 8, 
+//         minLowercase: 1, 
+//         minUppercase: 1, 
+//         minNumbers: 1, 
+//         minSymbols: 1, 
+//     });
+
+//     if (!isStrongPassword) {
+//         return res.render('/register', {message: 'You should have strong password', username: req.body.user})
+//     };
+
+//     next();
+// };
+
+// router.post(
+//     '/register', 
+//     isGuest, 
+//     isStrongPasswordmiddleware,
+//     // body('email', 'Your email is not valid').isEmail().normalizeEmail(),
+//     // body('username', 'Specify username').notEmpty(),
+//     // body('password', 'Password too short').isLength({min: 5}),
+//     async (req, res) => {
+//         const { username, password, repeatPassword } = req.body;
+
+//         if (password !== repeatPassword) {
+//             return res.render('register', { error: {message: 'Password missmatch!'} });
+//         }
+
+//         try {
+//             let user = await authService.register({ username, password });
+
+//             res.redirect('/auth/login');
+//         } catch (err) {
+//             // let error = Object.keys(err?.errors).map(x => ({ message: err.errors[x].properties.message}))[0];
+//             // console.log(errors);
+//             res.render('register', { error });
+//         }
+//     }
+// );
+
+router.post('/register', isGuest, async (req, res) => {
     //validate
     const { username, password, repeatPassword } = req.body;
 
-    if (password !== repeatPassword) {
+    // We can put this in middleware. 
+    let isStrongPassword = validator.isStrongPassword(password, { 
+        minLength: 8, 
+        minLowercase: 1, 
+        minUppercase: 1, 
+        minNumbers: 1, 
+        minSymbols: 1, 
+    });
+
+      if (password !== repeatPassword) {
         res.render('register', { message: 'Password missmatch' });
         return;
     }
 
     //ако е асинхронна ф-ия задължително трабва try/catch
     try {
+        if (!isStrongPassword) {
+            throw{message: 'You should have strong password'}
+        }
+        
         let user = await authService.register({ username, password });
 
         res.redirect('/auth/login');
